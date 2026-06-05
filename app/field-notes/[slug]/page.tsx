@@ -7,13 +7,17 @@ import { generateHTML } from "@tiptap/html"
 import StarterKit from "@tiptap/starter-kit"
 import { notFound } from "next/navigation"
 
-export async function generateStaticParams() {
-  const articles = await getPublishedArticles()
+export const dynamic = "force-dynamic"
 
-  return articles.map((article) => ({
-    slug: article.slug,
-  }))
-}
+// export async function generateStaticParams() {
+//   const articles = await getPublishedArticles()
+
+//   return articles.map((article) => ({
+//     slug: article.slug,
+//   }))
+// }
+
+
 
 export async function generateMetadata({
   params,
@@ -52,14 +56,30 @@ export default async function ArticlePage({
     .filter((a) => a.id !== article.id && a.category === article.category)
     .slice(0, 3)
 
-  const articleHTML = article.body_content
-    ? generateHTML(
-        typeof article.body_content === "string"
-          ? JSON.parse(article.body_content)
-          : article.body_content,
-        [StarterKit]
-      )
-    : ""
+  // const articleHTML = article.body_content
+  //   ? generateHTML(
+  //       typeof article.body_content === "string"
+  //         ? JSON.parse(article.body_content)
+  //         : article.body_content,
+  //       [StarterKit]
+  //     )
+  //   : ""
+
+  let articleHTML = ""
+
+  try {
+    articleHTML = article.body_content
+      ? generateHTML(
+          typeof article.body_content === "string"
+            ? JSON.parse(article.body_content)
+            : article.body_content,
+          [StarterKit]
+        )
+      : ""
+  } catch (error) {
+    console.error("TipTap parse error:", error)
+    articleHTML = ""
+  }
 
   const formattedReadTime = article.read_time?.replace(" read", "") || ""
 
