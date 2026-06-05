@@ -19,9 +19,10 @@ export function Footer() {
               <Image
                 src="/logo.svg"
                 alt="iCODE Abakwa"
-                width={140}
-                height={40}
-                className="h-10 w-auto"
+                width={500}
+                height={200}
+                className="h-38 lg:h-46 w-auto"
+                priority
               />
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed">

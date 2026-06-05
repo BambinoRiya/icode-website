@@ -30,9 +30,9 @@ export function Navbar() {
             <Image
               src="/logo.svg"
               alt="iCODE Abakwa"
-              width={200}
-              height={60}
-              className="h-10 lg:h-12 w-auto"
+              width={500}
+              height={200}
+              className="h-34 lg:h-42 w-auto mt-4"
               priority
             />
           </Link>
