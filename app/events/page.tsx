@@ -1,6 +1,8 @@
 import { getAllPublishedEvents } from '@/lib/events-data'
 import { EventsPageClient } from '@/components/events-page-client'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Events | iCODE Abakwa',
   description: 'Bootcamps, hackathons, and workshops where the systems get built.',

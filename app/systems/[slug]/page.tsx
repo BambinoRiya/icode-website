@@ -1,20 +1,15 @@
 import Link from 'next/link'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { getSystemBySlug, getAllSystems } from '@/lib/systems-data'
+import { getSystemBySlug } from '@/lib/systems-data'
 import { notFound } from 'next/navigation'
+
+export const dynamic = 'force-dynamic'
 
 interface PageProps {
   params: Promise<{
     slug: string
   }>
-}
-
-export async function generateStaticParams() {
-  const systems = await getAllSystems()
-  return systems.map((system) => ({
-    slug: system.slug,
-  }))
 }
 
 export async function generateMetadata(props: PageProps) {

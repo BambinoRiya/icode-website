@@ -6,6 +6,8 @@ import { FieldNotesSection } from "@/components/field-notes-section"
 import { LiveModeSection } from "@/components/live-mode-section"
 import { Footer } from "@/components/footer"
 
+export const dynamic = "force-dynamic"
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#FAFAF7]">

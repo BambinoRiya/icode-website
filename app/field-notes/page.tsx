@@ -5,6 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
+export const dynamic = "force-dynamic"
+
 export const metadata = {
   title: "Field Notes | iCODE Abakwa",
   description: "Build logs, reflections, and lessons from the iCODE Abakwa team",
