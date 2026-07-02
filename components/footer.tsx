@@ -1,16 +1,23 @@
+'use client'
+
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { ContactModal } from "./contact-modal/contact-modal"
 
 const footerLinks = [
   { href: "#systems", label: "Projects" },
   { href: "#field-notes", label: "Blog" },
-  { href: "#live-mode", label: "Events" },
-  { href: "#", label: "Contact" },
+  { href: "#team", label: "Team" },
 ]
 
 export function Footer() {
+  const [isContactOpen, setIsContactOpen] = useState(false)
+
   return (
-    <footer id="join" className="py-16 border-t border-border bg-gradient-to-b from-[#FAFAF7] via-[#f0fdf9]/30 to-[#FAFAF7]">
+    <>
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <footer id="join" className="py-16 border-t border-border bg-gradient-to-b from-[#FAFAF7] via-[#f0fdf9]/30 to-[#FAFAF7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -19,10 +26,9 @@ export function Footer() {
               <Image
                 src="/logo.svg"
                 alt="iCODE Abakwa"
-                width={500}
-                height={200}
-                className="h-38 lg:h-46 w-auto"
-                priority
+                width={140}
+                height={40}
+                className="h-10 w-auto"
               />
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed">
@@ -47,25 +53,21 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Stay Updated</h4>
+            <h4 className="font-semibold text-foreground mb-4">Get in Touch</h4>
             <p className="text-sm text-muted-foreground mb-4">
-              Get updates on new systems and events.
+              We'd love to hear from you.
             </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-2 rounded-full bg-white border border-border text-sm focus:outline-none focus:ring-2 focus:ring-[#0d9488]/30 focus:border-[#0d9488]"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 bg-[#0d9488] text-white rounded-full text-sm font-medium hover:bg-[#0a7a6e] transition-colors"
-              >
-                Join
-              </button>
-            </form>
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="w-full px-4 py-2 bg-gradient-to-r from-[#0d9488] to-[#0a7a6e] text-white rounded-full text-sm font-medium hover:from-[#0a7a6e] hover:to-[#08625a] transition-colors flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Contact Us
+            </button>
           </div>
         </div>
 
@@ -97,5 +99,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </>
   )
 }

@@ -41,15 +41,16 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (
-    // if the user is not logged in and the app path, in this case, /protected, is accessed, redirect to the login page
-    request.nextUrl.pathname.startsWith('/protected') &&
-    !user
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone()
-    url.pathname = '/auth/login'
-    return NextResponse.redirect(url)
+  const isAdminPath = request.nextUrl.pathname.startsWith('/icode-hq')
+  const isAdminAuthPath =
+    request.nextUrl.pathname.startsWith('/icode-hq/login') ||
+    request.nextUrl.pathname.startsWith('/icode-hq/signup')
+
+  if (isAdminPath && !isAdminAuthPath && !user) {
+    // No session - redirect away before the admin page (or its data) ever renders.
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = '/icode-hq/login'
+    return NextResponse.redirect(redirectUrl)
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.

@@ -8,7 +8,7 @@ Your Field Notes CMS is now fully integrated with Supabase. This guide walks you
 
 ### 1. Admin Login
 
-Visit your site and navigate to `/admin/login` to access the admin dashboard.
+Visit your site and navigate to `/icode-hq/login` to access the admin dashboard.
 
 **First Time Setup:**
 - Click "Sign up" to create an admin account
@@ -19,7 +19,7 @@ Visit your site and navigate to `/admin/login` to access the admin dashboard.
 
 ### 2. Access the Dashboard
 
-Once logged in, you'll see the admin dashboard at `/admin/dashboard` with:
+Once logged in, you'll see the admin dashboard at `/icode-hq/dashboard` with:
 - List of all articles (published and drafts)
 - Quick stats showing number of articles
 - Buttons to create new articles or edit existing ones

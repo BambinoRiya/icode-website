@@ -61,7 +61,7 @@ export default function AdminSignupPage() {
           <p className="text-muted-foreground mb-6">
             We&apos;ve sent a confirmation link to <strong>{email}</strong>. Click the link to confirm your account.
           </p>
-          <Link href="/admin/login" className="text-[#0d9488] hover:underline">
+          <Link href="/icode-hq/login" className="text-[#0d9488] hover:underline">
             Back to Login
           </Link>
         </div>
@@ -140,7 +140,7 @@ export default function AdminSignupPage() {
 
         <p className="text-center text-sm text-muted-foreground mt-6">
           Already have an account?{' '}
-          <Link href="/admin/login" className="text-[#0d9488] hover:underline">
+          <Link href="/icode-hq/login" className="text-[#0d9488] hover:underline">
             Sign in
           </Link>
         </p>

@@ -6,11 +6,10 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
-  { href: "/#systems", label: "Systems" },
-  { href: "/#lab", label: "Lab" },
+  { href: "/systems", label: "Systems" },
+  { href: "/events", label: "Events" },
   { href: "/field-notes", label: "Field Notes" },
   { href: "/team", label: "Our Team" },
-  { href: "/admin/login", label: "Admin", isAdmin: true },
 ]
 
 export function Navbar() {
@@ -43,11 +42,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors duration-200 text-sm font-medium ${
-                  link.isAdmin
-                    ? "px-3 py-1 rounded-full bg-[#e53888]/10 text-[#e53888] hover:bg-[#e53888]/20"
-                    : "text-foreground/70 hover:text-[#e53888]"
-                }`}
+                className="transition-colors duration-200 text-sm font-medium text-foreground/70 hover:text-[#e53888]"
               >
                 {link.label}
               </Link>
@@ -100,11 +95,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block py-2 transition-colors text-base ${
-                    link.isAdmin
-                      ? "px-3 py-2 rounded-full bg-[#e53888]/10 text-[#e53888] hover:bg-[#e53888]/20"
-                      : "text-foreground/70 hover:text-[#e53888]"
-                  }`}
+                  className="block py-2 transition-colors text-base text-foreground/70 hover:text-[#e53888]"
                 >
                   {link.label}
                 </Link>
